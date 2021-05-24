@@ -1,4 +1,4 @@
-module kustomize
+module sigs.k8s.io/kustomize
 
 go 1.16
 
