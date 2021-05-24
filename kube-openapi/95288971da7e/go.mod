@@ -12,7 +12,7 @@ require (
 	github.com/golang/protobuf v1.4.2
 	github.com/google/gofuzz v1.0.0
 	github.com/google/uuid v1.1.1
-	github.com/googleapis/gnostic v0.5.1
+	github.com/googleapis/gnostic v0.4.0
 	github.com/json-iterator/go v1.1.6
 	github.com/mitchellh/mapstructure v1.1.2
 	github.com/munnerz/goautoneg v0.0.0-20120707110453-a547fc61f48d
