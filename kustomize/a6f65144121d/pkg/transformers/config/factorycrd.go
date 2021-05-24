@@ -21,9 +21,9 @@ import (
 	"strings"
 
 	"github.com/ghodss/yaml"
-	"github.com/go-openapi/spec"
 	"github.com/pkg/errors"
 	"k8s.io/kube-openapi/pkg/common"
+	"k8s.io/kube-openapi/pkg/validation/spec"
 	"sigs.k8s.io/kustomize/pkg/gvk"
 	"sigs.k8s.io/kustomize/pkg/ifc"
 )
@@ -67,10 +67,10 @@ func makeNameToApiMap(content []byte) (result nameToApiMap, err error) {
 
 func makeConfigFromApiMap(m nameToApiMap) (*TransformerConfig, error) {
 	result := MakeEmptyConfig()
-	for name, _ := range m {
-		//if !looksLikeAk8sType(api.Schema.SchemaProps.Properties) {
-		//	continue
-		//}
+	for name, api := range m {
+		if !looksLikeAk8sType(api.Schema.SchemaProps.Properties) {
+			continue
+		}
 		tc := MakeEmptyConfig()
 		err := loadCrdIntoConfig(
 			tc, makeGvkFromTypeName(name), m, name, []string{})
