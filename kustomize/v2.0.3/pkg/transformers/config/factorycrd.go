@@ -67,10 +67,10 @@ func makeNameToApiMap(content []byte) (result nameToApiMap, err error) {
 
 func makeConfigFromApiMap(m nameToApiMap) (*TransformerConfig, error) {
 	result := MakeEmptyConfig()
-	for name, api := range m {
-		if !looksLikeAk8sType(api.Schema.SchemaProps.Properties) {
-			continue
-		}
+	for name, _ := range m {
+		//if !looksLikeAk8sType(api.Schema.SchemaProps.Properties) {
+		//	continue
+		//}
 		tc := MakeEmptyConfig()
 		err := loadCrdIntoConfig(
 			tc, makeGvkFromTypeName(name), m, name, []string{})
